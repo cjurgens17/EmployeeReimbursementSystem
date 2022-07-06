@@ -12,27 +12,32 @@ public class User {
 
 
     public Integer getUserId() {
+
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(Integer id) {
+
+        userId = id;
     }
 
     public void setPassword(String p){
-        p = password;
+        password = p;
 
     }
 
-    public String getPassword(String password){
+    public String getPassword(){
+
         return this.password;
     }
 
     public void setUsername(String u){
-        u = username;
+
+        username = u;
     }
 
-    public String getUsername(String username){
+    public String getUsername(){
+
         return this.username;
     }
 
