@@ -61,6 +61,32 @@ public class ReimbursementTicketDAO implements DAOInterface<ReimbursementTicket>
 
     @Override
     public ReimbursementTicket update(ReimbursementTicket reimbursementTicket) {
+
+        try{String sql = "UPDATE tickets SET status = ? WHERE employee_id = ?";
+
+            PreparedStatement myStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            myStmt.setString(1, reimbursementTicket.getStatus());
+            myStmt.setInt(2,reimbursementTicket.getEmployee_id());
+
+            myStmt.executeUpdate();
+
+            ResultSet rs = myStmt.getGeneratedKeys();
+
+            while(rs.next()){
+                reimbursementTicket.setStatus("status");
+            }
+
+            return reimbursementTicket;
+
+
+
+
+
+
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         return null;
     }
 

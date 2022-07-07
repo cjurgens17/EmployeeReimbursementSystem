@@ -76,7 +76,7 @@ public class EmployeeDAO implements DAOInterface<Employee> {
     public Employee update(Employee employee) {
 
         try {
-            String sql = "UPDATE employees SET username = ? WHERE user_id = ?";
+            String sql = "UPDATE employees SET username = ? WHERE employee_id = ?";
 
             PreparedStatement myStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
