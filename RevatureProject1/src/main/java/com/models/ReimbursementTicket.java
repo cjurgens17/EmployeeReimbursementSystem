@@ -9,7 +9,26 @@ public class ReimbursementTicket {
 
     private String description;
 
-    //getters and setters
+    private String status;
+
+    private Integer employee_id;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Integer getEmployee_id() {
+        return employee_id;
+    }
+
+    public void setEmployee_id(Integer employee_id) {
+        this.employee_id = employee_id;
+    }
+//getters and setters
 
     public Integer getTicket_number() {
         return ticket_number;
@@ -41,14 +60,18 @@ public class ReimbursementTicket {
 
     }
 //send information
-    public ReimbursementTicket(Integer ticket_number, Float amount, String description) {
+    public ReimbursementTicket(Integer ticket_number, Float amount, String description, String status, Integer employee_id) {
         this.ticket_number = ticket_number;
         this.amount = amount;
         this.description = description;
+        this.status = status;
+        this.employee_id = employee_id;
     }
 
-    public ReimbursementTicket(Float amount, String description) {
+    public ReimbursementTicket(Float amount, String description, String status, Integer employee_id) {
         this.amount = amount;
         this.description = description;
+        this.status = status;
+        this.employee_id = employee_id;
     }
 }

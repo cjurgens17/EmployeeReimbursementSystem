@@ -24,12 +24,14 @@ public class ReimbursementTicketDAO implements DAOInterface<ReimbursementTicket>
     @Override
     public Integer create(ReimbursementTicket reimbursementTicket) {
 
-        try { String sql = "INSERT INTO tickets (ticket_id, amount, description) VALUES (default,?,?)";
+        try { String sql = "INSERT INTO tickets (ticket_number, amount, description, status, employee_id) VALUES (default,?,?,?,?)";
 
             PreparedStatement myStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             myStmt.setFloat(1,reimbursementTicket.getAmount());
             myStmt.setString(2, reimbursementTicket.getDescription());
+            myStmt.setString(3, reimbursementTicket.getStatus());
+            myStmt.setInt(4,reimbursementTicket.getEmployee_id());
 
             myStmt.executeUpdate();
 

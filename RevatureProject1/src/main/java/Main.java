@@ -1,20 +1,17 @@
 
 
-import com.alldaos.UserDAO;
-import com.models.User;
+import com.alldaos.EmployeeDAO;
+import com.models.Employee;
 import com.utils.ConnectionControl;
-
-import java.nio.channels.SocketChannel;
-import java.sql.Connection;
 
 public class Main {
     public static void main(String[] args){
 
     ConnectionControl.connect();
 
-    UserDAO userDAO = new UserDAO();
-    User chris = new User("BigDawg17", "myPassword");
-    User mike = new User(3,"TysonFuryMike","anotherPassword");
+    //UserDAO userDAO = new UserDAO();
+    //Employee chris = new Employee("BigDawg17", "myPassword");
+   // Employee mike = new Employee(3,"TysonFuryMike","anotherPassword");
     //userDAO.create(chris);
    // userDAO.create(mike);
     //userDAO.delete(2);
@@ -23,7 +20,11 @@ public class Main {
     //userDAO.update(mike);
         //userDAO.checkLoginInfo("BigMike");
         //userDAO.read(1);
-        userDAO.checkLoginInfo("BigMike");
+        //userDAO.checkLoginInfo("BigMike");
+        Employee chris = new Employee(1,"chris17","bronson","employee");
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        employeeDAO.create(chris);
+
 
 
 

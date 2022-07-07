@@ -1,6 +1,6 @@
 package com.alldaos;
 
-import com.models.User;
+import com.models.Employee;
 import com.utils.ConnectionControl;
 import com.utils.DAOInterface;
 
@@ -9,26 +9,27 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class UserDAO implements DAOInterface<User> {
+public class EmployeeDAO implements DAOInterface<Employee> {
 
     Connection connection;
 
 
-    public UserDAO() {
+    public EmployeeDAO() {
         connection = ConnectionControl.getConnection();
 
     }
 
     @Override
-    public Integer create(User user) {
+    public Integer create(Employee employee) {
 
         try {
-            String sql = "INSERT INTO users (user_id, username, pass_word) VALUES (default,?,?)";
+            String sql = "INSERT INTO employees (employee_id, username, pass_word, employee_type) VALUES (default,?,?,?)";
 
             PreparedStatement myStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            myStmt.setString(1, user.getUsername());
-            myStmt.setString(2, user.getPassword());
+            myStmt.setString(1, employee.getUsername());
+            myStmt.setString(2, employee.getPassword());
+            myStmt.setString(3, employee.getEmployee_type());
 
             myStmt.executeUpdate();
 
@@ -49,7 +50,7 @@ public class UserDAO implements DAOInterface<User> {
     public void read(Integer id) {
 
         try {    //String sql = "SELECT * FROM users WHERE user_id = ?";
-            String sql = "SELECT * FROM users";
+            String sql = "SELECT * FROM employees";
 
             PreparedStatement myStmt = connection.prepareStatement(sql);
             // myStmt.setInt(1,id);
@@ -57,9 +58,10 @@ public class UserDAO implements DAOInterface<User> {
 
 
             while (rs.next()) {
-                System.out.println(rs.getInt("user_id"));
+                System.out.println(rs.getInt("employee_id"));
                 System.out.println(rs.getString("pass_word"));
                 System.out.println(rs.getString("username"));
+                System.out.println(rs.getString("employee_type"));
             }
 
 
@@ -71,25 +73,25 @@ public class UserDAO implements DAOInterface<User> {
     }
 
     @Override
-    public User update(User user) {
+    public Employee update(Employee employee) {
 
         try {
-            String sql = "UPDATE users SET username = ? WHERE user_id = ?";
+            String sql = "UPDATE employees SET username = ? WHERE user_id = ?";
 
             PreparedStatement myStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            myStmt.setString(1, user.getUsername());
+            myStmt.setString(1, employee.getUsername());
 
-            myStmt.setInt(2, user.getUserId());
+            myStmt.setInt(2, employee.getEmployee_Id());
 
             myStmt.executeUpdate();
 
             ResultSet rs = myStmt.getGeneratedKeys();
 
             while (rs.next()) {
-                user.setUsername("username");
+                employee.setUsername("username");
             }
-            return user;
+            return employee;
 
 
         } catch (Exception e) {
@@ -104,7 +106,7 @@ public class UserDAO implements DAOInterface<User> {
         try {
 
 
-            String sql = "DELETE FROM users WHERE user_id = ?";
+            String sql = "DELETE FROM employees WHERE employee_id = ?";
             PreparedStatement myStmt = connection.prepareStatement(sql);
             myStmt.setInt(1, id);
 
@@ -120,7 +122,7 @@ public class UserDAO implements DAOInterface<User> {
 
     public void checkLoginInfo(String username) {
         try {
-            String sql = "SELECT * FROM users WHERE username = ?";
+            String sql = "SELECT * FROM employees WHERE username = ?";
 
             PreparedStatement myStmt = connection.prepareStatement(sql);
 
@@ -148,8 +150,7 @@ public class UserDAO implements DAOInterface<User> {
         //  } else {
         // System.out.println("Username Availabel");
         // }
-    catch(
-    Exception e)
+    catch(Exception e)
 
     {
 

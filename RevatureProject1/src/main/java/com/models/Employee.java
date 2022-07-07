@@ -1,24 +1,34 @@
 package com.models;
 
-public class User {
+public class Employee {
 
-    private Integer userId;
+    private Integer employee_Id;
     //fields
     private String username;
 
     private String password;
 
+    private String employee_type;
+
     //getters and setters
 
 
-    public Integer getUserId() {
-
-        return userId;
+    public String getEmployee_type() {
+        return employee_type;
     }
 
-    public void setUserId(Integer id) {
+    public void setEmployee_type(String employee_type) {
+        this.employee_type = employee_type;
+    }
 
-        userId = id;
+    public Integer getEmployee_Id() {
+
+        return employee_Id;
+    }
+
+    public void setEmployee_Id(Integer id) {
+
+        employee_Id = id;
     }
 
     public void setPassword(String p){
@@ -43,19 +53,21 @@ public class User {
 
 
 //Constructors
-    public User(){
+    public Employee(){
     }
 
 //retrieveing from the database, we need the specific userId to know which use to get information from.
-    public User(Integer userId, String username, String password){
-        this.userId = userId;
+    public Employee(Integer employee_Id, String username, String password, String employee_type){
+        this.employee_Id = employee_Id;
         this.username = username;
         this.password = password;
+        this.employee_type = employee_type;
     }
     //used to send information to the database.
-    public User(String username, String password){
+    public Employee(String username, String password, String employee_type){
         this.username = username;
         this.password = password;
+        this.employee_type = employee_type;
     }
 
 }
