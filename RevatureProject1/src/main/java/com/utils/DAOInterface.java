@@ -6,7 +6,7 @@ public interface DAOInterface<T> {
 Integer create(T t);
 
 
-void read(Integer id);
+T read(Integer id);
 
 
 

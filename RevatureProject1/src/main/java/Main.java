@@ -21,9 +21,9 @@ public class Main {
         //userDAO.checkLoginInfo("BigMike");
         //userDAO.read(1);
         //userDAO.checkLoginInfo("BigMike");
-        Employee chris = new Employee(1,"chris17","bronson","employee");
+
         EmployeeDAO employeeDAO = new EmployeeDAO();
-        employeeDAO.create(chris);
+        employeeDAO.read(1);
 
 
 

@@ -34,7 +34,7 @@ public static Connection getConnection(){
 
        try{
 
-           FileReader reader = new FileReader("src/main/resources/jdbc.properties");
+           FileReader reader = new FileReader("/Users/Chris/IdeaProjects/ProjectOne/RevatureProject1" + "/src/main/resources/jdbc.properties");
 
             Properties p = new Properties();
 
@@ -57,6 +57,7 @@ public static Connection getConnection(){
 
         String password = String.valueOf(p.get("password"));
         //DriverManager connects an application to a datasource- in our case this application is being connected to our AWS database.
+            Class.forName("org.postgresql.Driver");
         connection = DriverManager.getConnection(connectionUrl,user,password);
 
         System.out.println(connection.toString());

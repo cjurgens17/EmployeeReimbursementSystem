@@ -56,7 +56,7 @@ public class Employee {
     public Employee(){
     }
 
-//retrieveing from the database, we need the specific userId to know which use to get information from.
+//retrieving from the database, we need the specific userId to know which use to get information from.
     public Employee(Integer employee_Id, String username, String password, String employee_type){
         this.employee_Id = employee_Id;
         this.username = username;
@@ -68,6 +68,11 @@ public class Employee {
         this.username = username;
         this.password = password;
         this.employee_type = employee_type;
+    }
+
+    public Employee(String username, String password){
+        this.username = username;
+        this.password = password;
     }
 
 }

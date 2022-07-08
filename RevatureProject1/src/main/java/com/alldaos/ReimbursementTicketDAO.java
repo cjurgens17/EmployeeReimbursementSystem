@@ -55,7 +55,8 @@ public class ReimbursementTicketDAO implements DAOInterface<ReimbursementTicket>
 
 
     @Override
-    public void read(Integer id) {
+    public ReimbursementTicket read(Integer id) {
+        return new ReimbursementTicket();
 
     }
 

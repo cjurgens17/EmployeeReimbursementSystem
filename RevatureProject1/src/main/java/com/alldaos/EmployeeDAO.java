@@ -23,13 +23,13 @@ public class EmployeeDAO implements DAOInterface<Employee> {
     public Integer create(Employee employee) {
 
         try {
-            String sql = "INSERT INTO employees (employee_id, username, pass_word, employee_type) VALUES (default,?,?,?)";
+            String sql = "INSERT INTO employees (employee_id, username, pass_word, employee_type) VALUES (default,?,?,default)";
 
             PreparedStatement myStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             myStmt.setString(1, employee.getUsername());
             myStmt.setString(2, employee.getPassword());
-            myStmt.setString(3, employee.getEmployee_type());
+
 
             myStmt.executeUpdate();
 
@@ -47,28 +47,31 @@ public class EmployeeDAO implements DAOInterface<Employee> {
     }
 
     @Override//this prints out all users' information.
-    public void read(Integer id) {
+    public Employee read(Integer id) {
 
         try {    //String sql = "SELECT * FROM users WHERE user_id = ?";
-            String sql = "SELECT * FROM employees";
+            String sql = "SELECT * FROM employees WHERE employee_id = ?";
 
             PreparedStatement myStmt = connection.prepareStatement(sql);
-            // myStmt.setInt(1,id);
+             myStmt.setInt(1,id);
             ResultSet rs = myStmt.executeQuery();
+
+            Employee employee = new Employee();
 
 
             while (rs.next()) {
                 System.out.println(rs.getInt("employee_id"));
-                System.out.println(rs.getString("pass_word"));
                 System.out.println(rs.getString("username"));
+                System.out.println(rs.getString("pass_word"));
                 System.out.println(rs.getString("employee_type"));
             }
+            return employee;
 
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
+            return null;
 
     }
 
