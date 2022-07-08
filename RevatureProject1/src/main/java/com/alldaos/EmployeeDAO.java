@@ -60,10 +60,10 @@ public class EmployeeDAO implements DAOInterface<Employee> {
 
 
             while (rs.next()) {
-                System.out.println(rs.getInt("employee_id"));
-                System.out.println(rs.getString("username"));
-                System.out.println(rs.getString("pass_word"));
-                System.out.println(rs.getString("employee_type"));
+                employee.setEmployee_Id(rs.getInt("employee_id"));
+                employee.setUsername(rs.getString("username"));
+                employee.setPassword(rs.getString("pass_word"));
+                employee.setEmployee_type(rs.getString("employee_type"));
             }
             return employee;
 
@@ -71,7 +71,8 @@ public class EmployeeDAO implements DAOInterface<Employee> {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-            return null;
+        return null;
+
 
     }
 

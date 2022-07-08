@@ -31,26 +31,32 @@ public class ReimbursementTicket {
 //getters and setters
 
     public Integer getTicket_number() {
+
         return ticket_number;
     }
 
     public void setTicket_number(Integer ticket_number) {
+
         this.ticket_number = ticket_number;
     }
 
     public Float getAmount() {
+
         return amount;
     }
 
     public void setAmount(Float amount) {
+
         this.amount = amount;
     }
 
     public String getDescription() {
+
         return description;
     }
 
     public void setDescription(String description) {
+
         this.description = description;
     }
 

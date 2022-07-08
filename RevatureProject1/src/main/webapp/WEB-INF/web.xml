@@ -24,6 +24,15 @@
         <servlet-name>employeeServlet</servlet-name>
         <url-pattern>/employee</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>reimbursementTicket</servlet-name>
+        <servlet-class>com.servlets.ReimbursementTicketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>reimbursementTicket</servlet-name>
+        <url-pattern>/reimbursement</url-pattern>
+    </servlet-mapping>
     
     
     
