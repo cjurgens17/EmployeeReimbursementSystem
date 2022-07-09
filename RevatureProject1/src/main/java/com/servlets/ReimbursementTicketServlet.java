@@ -20,15 +20,5 @@ public class ReimbursementTicketServlet extends HttpServlet {
         resp.getWriter().println(new ReimbursementTicket(1,200.00f, "Travel expenses", "new",1));
     }
 
-    @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    }
 
-    @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    }
 }

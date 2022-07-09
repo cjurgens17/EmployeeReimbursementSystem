@@ -22,6 +22,8 @@ public class EmployeeServlet extends HttpServlet {
         String password = String.valueOf(req.getParameter("password_input_sign_in"));
 
         CurrentUser.currentUser = employeeDAO.checkLoginInfo(username, password);
+
+        req.getRequestDispatcher("welcome.html").forward(req,resp);
     }
 
     @Override
