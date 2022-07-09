@@ -2,6 +2,7 @@ package com.alldaos;
 
 import com.models.Employee;
 import com.utils.ConnectionControl;
+import com.utils.CurrentUser;
 import com.utils.DAOInterface;
 
 import java.sql.Connection;
@@ -124,43 +125,30 @@ public class EmployeeDAO implements DAOInterface<Employee> {
     }
 
 
-    public void checkLoginInfo(String username) {
-        try {
+    public CurrentUser checkLoginInfo(String username, String password) {
+
+        try{
             String sql = "SELECT * FROM employees WHERE username = ?";
-
             PreparedStatement myStmt = connection.prepareStatement(sql);
-
-            myStmt.setString(1, username);
+            myStmt.setString(1,username);
 
             ResultSet rs = myStmt.executeQuery();
 
-            while (rs.next()) {
-                if (username.equals(rs.getString("username"))){
-                    System.out.println("Username is not available");
-                    break;
+            if(rs.next() && rs.getString("pass_word").equals(password)){
+                return new CurrentUser(rs.getInt("employee_id"),
+                        rs.getString("username"),
+                        rs.getString("pass_word"),
+                        rs.getString("employee_type"));
 
-                } else if(!username.equals(rs.getString("username"))){
-                    System.out.println("Username is available");
-                    break;
-
-                }
             }
 
+
+
+        }catch(Exception e){
+            System.out.println("EmployeeDAO " + e.getMessage() );
         }
+        return CurrentUser.currentUser;
 
-
-        //if (rs.getNString("username").equals(username)) {
-        // System.out.println("This username already exists");
-        //  } else {
-        // System.out.println("Username Availabel");
-        // }
-    catch(Exception e)
-
-    {
-
-
-        System.out.println(e.getMessage());
-    }
 }
 }
 

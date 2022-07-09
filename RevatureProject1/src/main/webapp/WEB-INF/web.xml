@@ -33,6 +33,15 @@
         <servlet-name>reimbursementTicket</servlet-name>
         <url-pattern>/reimbursement</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>registerNowServlet</servlet-name>
+        <servlet-class>com.servlets.RegisterNowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registerNowServlet</servlet-name>
+        <url-pattern>/registerNow</url-pattern>
+    </servlet-mapping>
     
     
     
