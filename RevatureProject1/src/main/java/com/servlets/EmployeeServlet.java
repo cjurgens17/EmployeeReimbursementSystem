@@ -23,22 +23,18 @@ public class EmployeeServlet extends HttpServlet {
 
         CurrentUser.currentUser = employeeDAO.checkLoginInfo(username, password);
 
-        req.getRequestDispatcher("welcome.html").forward(req,resp);
+        req.getRequestDispatcher("employeePage.html").forward(req,resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = String.valueOf(req.getParameter("username_input"));
         String password = String.valueOf(req.getParameter("password_input"));
-        String employeeType = String.valueOf(req.getParameter("employee"));
-        if ("Employee".equals(employeeType)) {
-            employeeType = "Employee";
+        String employee_type = String.valueOf(req.getParameter("type_input"));
 
-        } else if ("Manager".equals(employeeType)) {
-            employeeType = "Manager";
-        }
 
-            Employee employee = new Employee(username, password, employeeType);
+
+            Employee employee = new Employee(username, password, employee_type);
             employeeDAO.create(employee);
 
             req.getRequestDispatcher("index.html").forward(req,resp);

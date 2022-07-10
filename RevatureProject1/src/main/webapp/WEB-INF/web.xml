@@ -42,6 +42,15 @@
         <servlet-name>registerNowServlet</servlet-name>
         <url-pattern>/registerNow</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>managerServlet</servlet-name>
+        <servlet-class>com.servlets.ManagerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>managerServlet</servlet-name>
+        <url-pattern>/managerPage</url-pattern>
+    </servlet-mapping>
     
     
     

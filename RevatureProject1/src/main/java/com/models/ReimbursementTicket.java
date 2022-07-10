@@ -65,7 +65,14 @@ public class ReimbursementTicket {
     public ReimbursementTicket(){
 
     }
-//send information
+
+    public ReimbursementTicket(Float amount, String description, Integer employee_id) {
+        this.amount = amount;
+        this.description = description;
+        this.employee_id = employee_id;
+    }
+
+    //send information
     public ReimbursementTicket(Integer ticket_number, Float amount, String description, String status, Integer employee_id) {
         this.ticket_number = ticket_number;
         this.amount = amount;

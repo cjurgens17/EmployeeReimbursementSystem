@@ -16,6 +16,7 @@ public class ReimbursementTicketDAO implements DAOInterface<ReimbursementTicket>
     //connection constructor
 
     public ReimbursementTicketDAO(){
+
         connection = ConnectionControl.getConnection();
     }
 
@@ -24,14 +25,15 @@ public class ReimbursementTicketDAO implements DAOInterface<ReimbursementTicket>
     @Override
     public Integer create(ReimbursementTicket reimbursementTicket) {
 
-        try { String sql = "INSERT INTO tickets (ticket_number, amount, description, status, employee_id) VALUES (default,?,?,?,?)";
+        try { String sql = "INSERT INTO tickets (ticket_number, amount, description, status, employee_id) VALUES (default,?,?,default,?)";
 
             PreparedStatement myStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             myStmt.setFloat(1,reimbursementTicket.getAmount());
             myStmt.setString(2, reimbursementTicket.getDescription());
-            myStmt.setString(3, reimbursementTicket.getStatus());
-            myStmt.setInt(4,reimbursementTicket.getEmployee_id());
+            myStmt.setInt(3, reimbursementTicket.getEmployee_id());
+
+
 
             myStmt.executeUpdate();
 
@@ -93,6 +95,30 @@ public class ReimbursementTicketDAO implements DAOInterface<ReimbursementTicket>
 
     @Override
     public boolean delete(Integer id) {
+
         return false;
+    }
+
+
+    public Integer IdforTicket(String username) {
+
+        try{
+            String sql = "SELECT * FROM employees WHERE username = ?";
+            PreparedStatement myStmt = connection.prepareStatement(sql);
+            myStmt.setString(1,username);
+
+            ResultSet rs = myStmt.executeQuery();
+
+            if(rs.next()){
+                return rs.getInt("employee_id");
+            }
+
+
+
+        }catch(Exception e){
+            System.out.println("EmployeeDAO " + e.getMessage() );
+        }
+        return null;
+
     }
 }

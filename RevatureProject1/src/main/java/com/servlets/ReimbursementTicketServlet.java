@@ -1,7 +1,9 @@
 package com.servlets;
 
+import com.alldaos.EmployeeDAO;
 import com.alldaos.ReimbursementTicketDAO;
 import com.models.ReimbursementTicket;
+import com.utils.CurrentUser;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,11 +16,19 @@ public class ReimbursementTicketServlet extends HttpServlet {
     ReimbursementTicketDAO reimbursementTicketDAO = new ReimbursementTicketDAO();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        reimbursementTicketDAO.create(new ReimbursementTicket(1,200.00f, "Travel expenses", "new",1));
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("reimbursement.html").forward(req,resp);
 
-        resp.getWriter().println(new ReimbursementTicket(1,200.00f, "Travel expenses", "new",1));
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        Float amount = Float.valueOf(req.getParameter("amount_input"));
+        String description = String.valueOf(req.getParameter("description_input"));
+        Integer employee_id = reimbursementTicketDAO.IdforTicket(req.getParameter("username_input"));
+        ReimbursementTicket reimbursementTicket = new ReimbursementTicket(amount,description, employee_id);
+        reimbursementTicketDAO.create(reimbursementTicket);
+        req.getRequestDispatcher("employeePage.html").forward(req,resp);
+    }
 }
