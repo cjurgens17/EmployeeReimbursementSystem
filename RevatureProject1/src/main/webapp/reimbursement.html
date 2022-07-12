@@ -9,12 +9,22 @@
 
 <div>
     <form method="post" action="managerPage">
-        Select Action
-        <input type="radio" name="status" id="Approve">
-        <label>Approve</label><br>
-        <input type="radio" name="status" id="Deny">
-        <label>Deny</label><br>
+        <label>Enter Ticket Number</label>
+        <br>
+        <input type="number" name="ticket_id_input">
+        <br>
+        <br>
+        <label>Approve or Deny</label>
+        <br>
+        <input type="text" name="status">
+        <br>
+        <br>
+        <br>
+        <input type="submit" value="Submit Status">
     </form>
+    <br>
+    <br>
+    <input type="button" onclick="window.location.href = 'managerPage.html';" value="Go back to Manager Page"/>
 </div>
 
 </body>

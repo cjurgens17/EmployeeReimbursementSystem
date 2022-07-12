@@ -56,6 +56,11 @@ public class Employee {
     public Employee(){
     }
 
+    public Employee(Integer employee_Id, String employee_type){
+        this.employee_Id = employee_Id;
+        this.employee_type = employee_type;
+    }
+
 //retrieving from the database, we need the specific userId to know which use to get information from.
     public Employee(Integer employee_Id, String username, String password, String employee_type){
         this.employee_Id = employee_Id;

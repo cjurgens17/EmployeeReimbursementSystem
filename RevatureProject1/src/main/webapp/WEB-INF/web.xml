@@ -51,6 +51,16 @@
         <servlet-name>managerServlet</servlet-name>
         <url-pattern>/managerPage</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>promotionServlet</servlet-name>
+        <servlet-class>com.servlets.PromotionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>promotionServlet</servlet-name>
+        <url-pattern>/promotion</url-pattern>
+    </servlet-mapping>
+
     
     
     

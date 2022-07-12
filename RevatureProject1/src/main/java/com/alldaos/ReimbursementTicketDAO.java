@@ -65,6 +65,7 @@ public class ReimbursementTicketDAO implements DAOInterface<ReimbursementTicket>
     @Override
     public ReimbursementTicket update(ReimbursementTicket reimbursementTicket) {
 
+
         try{String sql = "UPDATE tickets SET status = ? WHERE employee_id = ?";
 
             PreparedStatement myStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -121,4 +122,38 @@ public class ReimbursementTicketDAO implements DAOInterface<ReimbursementTicket>
         return null;
 
     }
+
+
+//    public ReimbursementTicket updateTicket(String status, Integer employee_id) {
+//        ReimbursementTicket updateTicket = new ReimbursementTicket(status,employee_id);
+//
+//        try{
+//
+//            String sql = "UPDATE tickets SET status = ? WHERE employee_id = ?";
+//
+//            PreparedStatement myStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//
+//            myStmt.setString(1, status);
+//            myStmt.setInt(2,employee_id);
+//
+//            myStmt.executeUpdate();
+//
+//            ResultSet rs = myStmt.getGeneratedKeys();
+//
+//            while(rs.next()){
+//                updateTicket.setStatus("status");
+//            }
+//
+//            return updateTicket;
+//
+//
+//
+//
+//
+//
+//        }catch(Exception e){
+//            System.out.println(e.getMessage());
+//        }
+//        return null;
+//    }
 }

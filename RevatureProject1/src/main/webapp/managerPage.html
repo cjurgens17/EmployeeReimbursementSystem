@@ -5,14 +5,20 @@
     <title>Manager Page</title>
 </head>
 <body>
-<h2>Welcome</h2>
+<h2>Welcome Managers</h2>
 <div>
-<h5>Sometimes its hard being a manager, click below to process reimbursement tickets</h5>
-    <br>
-    <br>
+<h3>Process Tickets</h3>
 <form method="get" action="reimbursement">
     <input type="submit" value="Tickets">
 </form>
+    <h3>Click to Change Employee Status</h3>
+    <form method="get" action="promotion">
+        <br>
+        <input type="submit" value="Next">
+    </form>
+    <br>
+    <br>
+    <input type="button" onclick="window.location.href = 'index.html';" value="Go back to Home"/>
 </div>
 
 </body>

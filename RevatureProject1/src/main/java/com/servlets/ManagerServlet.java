@@ -1,6 +1,7 @@
 package com.servlets;
 
 import com.alldaos.ReimbursementTicketDAO;
+import com.models.ReimbursementTicket;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +20,29 @@ public class ManagerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       // String URI = req.getRequestURI().replace("/RevatureProject1/", "");
+       // System.out.println(URI);
+
+       // switch (URI){
+            //case "managerPage":
+                Integer ticket_id = Integer.valueOf(req.getParameter("ticket_id_input"));
+                String status = String.valueOf(req.getParameter("status"));
+                ReimbursementTicket updateTicket = new ReimbursementTicket(status,ticket_id);
+                reimbursementTicketDAO.update(updateTicket);
+                System.out.println(status);
+
+                System.out.println("This is coming from the managerPage action - (html form)");
+                req.getRequestDispatcher("reimbursement.html").forward(req,resp);
+
+                //break;
 
 
-        //Integer employee_id = reimbursementTicketDAO.IdforTicket(req.getParameter("username_input"));
-        //String status = String.valueOf(req.getParameter("status"));
+        }
+
+
+
 
     }
-}
+
+
+
