@@ -66,9 +66,9 @@ public class ReimbursementTicket {
 
     }
 
-    public ReimbursementTicket(String status, Integer emloyee_id){
+    public ReimbursementTicket(String status, Integer ticket_number){
         this.status = status;
-        this.employee_id = emloyee_id;
+        this.ticket_number = ticket_number;
     }
 
     public ReimbursementTicket(Float amount, String description, Integer employee_id) {

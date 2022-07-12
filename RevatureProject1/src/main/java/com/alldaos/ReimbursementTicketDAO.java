@@ -66,12 +66,13 @@ public class ReimbursementTicketDAO implements DAOInterface<ReimbursementTicket>
     public ReimbursementTicket update(ReimbursementTicket reimbursementTicket) {
 
 
-        try{String sql = "UPDATE tickets SET status = ? WHERE employee_id = ?";
+        try{
+            String sql = "UPDATE tickets SET status = ? WHERE ticket_number = ?";
 
             PreparedStatement myStmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             myStmt.setString(1, reimbursementTicket.getStatus());
-            myStmt.setInt(2,reimbursementTicket.getEmployee_id());
+            myStmt.setInt(2,reimbursementTicket.getTicket_number());
 
             myStmt.executeUpdate();
 
