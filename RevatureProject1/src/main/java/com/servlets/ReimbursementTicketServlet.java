@@ -28,6 +28,7 @@ public class ReimbursementTicketServlet extends HttpServlet {
         Float amount = Float.valueOf(req.getParameter("amount_input"));
         String description = String.valueOf(req.getParameter("description_input"));
         Integer employee_id = reimbursementTicketDAO.IdforTicket(req.getParameter("username_input"));
+        System.out.println(employee_id);
         ReimbursementTicket reimbursementTicket = new ReimbursementTicket(amount,description, employee_id);
         reimbursementTicketDAO.create(reimbursementTicket);
         req.getRequestDispatcher("employeePage.html").forward(req,resp);
