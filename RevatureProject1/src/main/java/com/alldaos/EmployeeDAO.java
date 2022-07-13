@@ -150,6 +150,36 @@ public class EmployeeDAO implements DAOInterface<Employee> {
         return CurrentUser.currentUser;
 
 }
+
+
+    public String reading(String username) {
+
+        try {    //String sql = "SELECT * FROM users WHERE user_id = ?";
+            String sql = "SELECT * FROM employees WHERE username = ?";
+
+            PreparedStatement myStmt = connection.prepareStatement(sql);
+            myStmt.setString(1,username);
+            ResultSet rs = myStmt.executeQuery();
+
+            Employee employee = new Employee();
+
+
+            while (rs.next()) {
+                employee.setEmployee_Id(rs.getInt("employee_id"));
+                employee.setUsername(rs.getString("username"));
+                employee.setPassword(rs.getString("pass_word"));
+                employee.setEmployee_type(rs.getString("employee_type"));
+            }
+            return employee.getEmployee_type();
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+
+
+    }
 }
 
 

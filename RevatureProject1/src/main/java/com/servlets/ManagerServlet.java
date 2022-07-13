@@ -1,7 +1,9 @@
 package com.servlets;
 
+import com.alldaos.EmployeeDAO;
 import com.alldaos.ReimbursementTicketDAO;
 import com.models.ReimbursementTicket;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,13 +11,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
+
+
 public class ManagerServlet extends HttpServlet {
     ReimbursementTicketDAO reimbursementTicketDAO = new ReimbursementTicketDAO();
+
+    EmployeeDAO employeeDAO = new EmployeeDAO();
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("managerPage.html").forward(req,resp);
+       String employee = employeeDAO.reading(String.valueOf(req.getParameter("username_input_sign_in")));
+
+        if(employee.equals("Manager")){
+            req.getRequestDispatcher("managerPage.html").forward(req,resp);
+        }else{
+            req.getRequestDispatcher("index.html").forward(req,resp);
+
+        }
+
+
     }
 
     @Override

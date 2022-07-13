@@ -14,10 +14,13 @@
         <input type="number" name="ticket_id_input" required>
         <br>
         <br>
-        <label>Approve or Deny</label>
+        <label>Process</label>
         <br>
-        <input type="text" name="status">
         <br>
+        <select required name="status">
+            <option value="Approve">Approve</option>
+            <option value="Deny">Deny</option>
+        </select>
         <br>
         <br>
         <input type="submit" value="Submit Status">
