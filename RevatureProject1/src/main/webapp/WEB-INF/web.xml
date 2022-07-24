@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--web.xml is your deployment descriptor
+        this is how tomcat gathers information about your project, such as welcome files,
+            available servlets, how to handle errors and exceptions, and other various
+            configurations you may want tomcat to know about.
+
+    It belongs in src/main/webapp/WEB-INF/ directory
+-->
+<web-app
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+        version="2.5">
+    
+    <listener>
+        <listener-class>com.servlets.DependencyLoaderListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>employeeServlet</servlet-name>
+        <servlet-class>com.servlets.EmployeeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>employeeServlet</servlet-name>
+        <url-pattern>/employee</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>reimbursementTicket</servlet-name>
+        <servlet-class>com.servlets.ReimbursementTicketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>reimbursementTicket</servlet-name>
+        <url-pattern>/reimbursement</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>registerNowServlet</servlet-name>
+        <servlet-class>com.servlets.RegisterNowServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registerNowServlet</servlet-name>
+        <url-pattern>/registerNow</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>managerServlet</servlet-name>
+        <servlet-class>com.servlets.ManagerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>managerServlet</servlet-name>
+        <url-pattern>/managerPage</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>promotionServlet</servlet-name>
+        <servlet-class>com.servlets.PromotionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>promotionServlet</servlet-name>
+        <url-pattern>/promotion</url-pattern>
+    </servlet-mapping>
+
+    
+    
+    
+    
+    
+</web-app>    

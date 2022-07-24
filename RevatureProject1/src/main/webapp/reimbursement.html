@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reimbursements</title>
+    <style>
+        .main {
+        text-align: center;
+        }
+        h1 {
+        text-align: center;
+        }
+        body {
+         background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHpvb20lMjBiYWNrZ3JvdW5kJTIwb2ZmaWNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
+         background-size: cover;
+         }
+    </style>
+</head>
+<body>
+<h1>Reimbursement Ticket Page</h1>
+
+<div class="main">
+    <form method="post" action="managerPage">
+        <label>Enter Ticket Number</label>
+        <br>
+        <input type="number" name="ticket_id_input" required>
+        <br>
+        <br>
+        <label>Process</label>
+        <br>
+        <br>
+        <select required name="status">
+            <option value="Approve">Approve</option>
+            <option value="Deny">Deny</option>
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Submit Status">
+    </form>
+    <br>
+    <br>
+    <input type="button" onclick="window.location.href = 'managerPage.html';" value="Go back to Manager Page"/>
+</div>
+
+</body>
+</html>
